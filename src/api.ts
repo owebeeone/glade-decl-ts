@@ -13,7 +13,7 @@ export interface GladeId {
 
 export interface Retention {
   policy: RetentionPolicy;
-  ttl_ms: number | null;
+  ttl_ms: bigint | null;
 }
 
 export interface BindingDecl {
@@ -34,14 +34,14 @@ export interface AdvertisementRecord {
 
 export interface OriginMeta {
   origin: string;
-  seq: number;
+  seq: bigint;
 }
 
 export interface ChangeEvent {
   glade_id: GladeId;
   shape: Shape;
   kind: ChangeKind;
-  base_seq: number | null;
+  base_seq: bigint | null;
   origin_meta: OriginMeta | null;
   payload: Uint8Array;
 }
