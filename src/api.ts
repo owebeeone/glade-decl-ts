@@ -1,6 +1,6 @@
 // GENERATED native TypeScript types — do not edit.
 
-export type Shape = "value" | "log" | "message" | "stream" | "exchange" | "window";
+export type Shape = "value" | "log" | "message" | "stream" | "exchange" | "window" | "swmr";
 export type Authority = "share" | "external";
 export type DomainAnchor = "account" | "document" | "deployment";
 export type ZoneKind = "commons" | "private";

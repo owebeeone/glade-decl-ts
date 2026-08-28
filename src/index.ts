@@ -15,4 +15,4 @@
 export type * from "./api.ts";
 
 // The pinned glade-decl contract commit this rendering was generated from.
-export const CONTRACT_VERSION = "ccdae14a544d7dedd28c32b0b2a16498e33b366b";
+export const CONTRACT_VERSION = "99a04e0b960d03cbe92c0ec17321761eda860845";
