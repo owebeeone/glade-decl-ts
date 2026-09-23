@@ -1,6 +1,6 @@
 // Corpus byte-parity gate for the TypeScript rendering.
 //
-// The pinned golden corpus (decl.v0.json) is the contract oracle. This crate's
+// The pinned golden corpus (decl.v1.json) is the contract oracle. This crate's
 // codec is an INDEPENDENT reimplementation of the deterministic-CBOR wire (not
 // Python's) — so reproducing these bytes is a genuine cross-language conformance
 // proof: every vector decodes from the committed bytes and re-encodes to the
@@ -15,7 +15,7 @@ import { decode, encode } from "./codec.ts";
 const here = fileURLToPath(new URL(".", import.meta.url));
 const ir = JSON.parse(readFileSync(here + "glade_decl.ir.json", "utf8"));
 const golden: Record<string, { message: string; cbor: string }> = JSON.parse(
-  readFileSync(here + "decl.v0.json", "utf8"),
+  readFileSync(here + "decl.v1.json", "utf8"),
 );
 const schema = loadSchema(ir);
 

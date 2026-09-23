@@ -2,7 +2,7 @@
 
 The TypeScript **rendering** of the [`glade-decl`](https://github.com/owebeeone/glade-decl)
 contract: generated native types for the glade declaration surface (`GladeId`,
-`Shape`, `Authority`, `BindingDecl`, `AdvertisementRecord`, `ChangeEvent`, …).
+`Shape`, `Authority`, `BindingDecl`, `ShapeProfileDecl`, `ChangeEvent`, …).
 A leaf package — grip-core imports these types (they erase at build) without
 importing glade or glial.
 
@@ -13,13 +13,13 @@ GENERATED — do not edit.
 
 ## Corpus gate
 
-The pinned golden corpus (`decl.v0.json`, `CONTRACT_VERSION` in `index.ts`) is
+The pinned golden corpus (`decl.v1.json`, `CONTRACT_VERSION` in `index.ts`) is
 the oracle. This crate's codec is an INDEPENDENT reimplementation of the wire, so
 reproducing these bytes is a genuine cross-language conformance proof.
 
 ```sh
-npm install
-npm test        # src/corpus.test.ts — byte-parity over every vector
+pnpm install
+pnpm test       # src/corpus.test.ts — byte-parity over every vector
 ```
 
 ## Regenerate
@@ -30,7 +30,7 @@ From the `glade-decl` contract repo (a gwz sibling):
 PYTHONPATH=../taut/src python3 -m taut.cli gen ir/glade_decl.taut.py \
     -o /tmp/g -l typescript --api-only --with-runtime   # api.ts + codec/cbor/schema
 cp /tmp/g/typescript/*.ts ../glade-decl-ts/src/
-cp ir/glade_decl.ir.json corpus/decl.v0.json ../glade-decl-ts/src/
+cp ir/glade_decl.ir.json corpus/decl.v1.json ../glade-decl-ts/src/
 ```
 
 Design: `glade-decl/dev-docs/DeclSurface.md`.

@@ -2,7 +2,7 @@
 //
 // The TypeScript rendering of the `glade-decl` contract (a taut schema): the
 // generated native types for the declaration surface (GladeId, Shape,
-// Authority, BindingDecl, AdvertisementRecord, ChangeEvent, …). A leaf package;
+// Authority, BindingDecl, ShapeProfileDecl, ChangeEvent, …). A leaf package;
 // grip-core imports these types (they erase at build) without importing glade
 // or glial.
 //
@@ -15,4 +15,4 @@
 export type * from "./api.ts";
 
 // The pinned glade-decl contract commit this rendering was generated from.
-export const CONTRACT_VERSION = "99a04e0b960d03cbe92c0ec17321761eda860845";
+export const CONTRACT_VERSION = "7d18cd3c92fac205e9c20160e78147c2573aae73";

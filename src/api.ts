@@ -1,6 +1,6 @@
 // GENERATED native TypeScript types — do not edit.
 
-export type Shape = "value" | "log" | "message" | "stream" | "exchange" | "window" | "swmr" | "crdt";
+export type Shape = "value" | "log" | "message" | "stream" | "exchange" | "window" | "swmr" | "crdt" | "atom";
 export type Authority = "share" | "external";
 export type DomainAnchor = "account" | "document" | "deployment";
 export type ZoneKind = "commons" | "private";
@@ -26,10 +26,9 @@ export interface BindingDecl {
   retention: Retention;
 }
 
-export interface AdvertisementRecord {
-  binding: BindingDecl;
-  package: string;
-  grip_key: string;
+export interface ShapeProfileDecl {
+  glade_id: GladeId;
+  profile: string;
 }
 
 export interface OriginMeta {
