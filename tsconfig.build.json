@@ -1,0 +1,19 @@
+{
+  // Emits the public entry point (the "." export) and what it imports to dist/.
+  // The IR-driven runtime (codec/cbor/schema/ext/taut_client) is not reachable
+  // from it; it still ships as source under src/, beside the IR and corpus JSON.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "rewriteRelativeImportExtensions": true,
+    "types": []
+  },
+  "include": ["src/index.ts"]
+}

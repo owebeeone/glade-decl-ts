@@ -13,9 +13,16 @@ GENERATED — do not edit.
 
 ## Contract v1
 
-The package is `@owebeeone/glade-decl`. A consumer in the gwz workspace depends
-on it by path, `"@owebeeone/glade-decl": "file:../glade-decl-ts"` in its
-`package.json`, as glial and grip-core do.
+The package is `@owebeeone/glade-decl`. Outside the gwz workspace, depend on the
+published release by version, `"@owebeeone/glade-decl": "^0.1.0"` in the
+consumer's `package.json` (`pnpm add @owebeeone/glade-decl@^0.1.0`).
+
+A consumer in the gwz workspace depends on this checkout by path instead,
+`"@owebeeone/glade-decl": "file:../glade-decl-ts"`, as glial does. grip-core
+declares `^0.1.0` and maps it back to this checkout with a `pnpm.overrides`
+entry. The checkout's `main`, `types` and `exports` name `src/index.ts`, so a
+path consumer needs no build; the published package's name `dist/`, because
+pnpm applies `publishConfig` when it packs.
 
 It renders contract **v1**: `CONTRACT_VERSION` in `src/index.ts` pins glade-decl
 commit `7d18cd3`.
@@ -40,6 +47,19 @@ reproducing these bytes is a genuine cross-language conformance proof.
 pnpm install
 pnpm test       # src/corpus.test.ts — byte-parity over every vector
 ```
+
+## Build and publish
+
+```sh
+pnpm build      # dist/: the "." entry point as ESM plus .d.ts
+pnpm pack       # builds first (prepack), then packs with the dist entry points
+```
+
+`pnpm build` deletes `dist/` before `tsc` writes it, since `tsc` would
+otherwise write through files that pnpm has hard-linked into consumers.
+Publishing is `.github/workflows/publish.yml`, run by a published GitHub
+release whose tag matches the version (`v0.1.0`). It publishes with the
+`NPM_TOKEN` repository secret.
 
 ## Regenerate
 
