@@ -1,6 +1,6 @@
 {
   "name": "@owebeeone/glade-decl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generated TypeScript types for the glade declaration surface (glade-decl contract rendering).",
   "license": "MIT",
   "type": "module",
