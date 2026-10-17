@@ -75,11 +75,6 @@ jobs:
         run: |
           node -e 'const p=require("./package.json"); const t=process.env.RELEASE_TAG.replace(/^v/, ""); if (p.version !== t) throw new Error(`package ${p.version} != tag ${t}`)'
       - name: Publish if this immutable version is absent
-        env:
-          # A token is needed only to bootstrap the package. Once the package
-          # exists, configure npm Trusted Publishing for publish.yml and remove
-          # this secret; npm will use the job's OIDC token automatically.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           package_spec=$(node -p "const p=require('./package.json'); p.name + '@' + p.version")
           if pnpm view "$package_spec" version >/dev/null 2>&1; then

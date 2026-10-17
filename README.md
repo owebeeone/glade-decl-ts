@@ -57,9 +57,10 @@ pnpm pack       # builds first (prepack), then packs with the dist entry points
 
 `pnpm build` deletes `dist/` before `tsc` writes it, since `tsc` would
 otherwise write through files that pnpm has hard-linked into consumers.
-Publishing is `.github/workflows/publish.yml`, run by a published GitHub
-release whose tag matches the version (`v0.1.0`). It publishes with the
-`NPM_TOKEN` repository secret.
+Release preparation uses Gearu; see [RELEASE.md](RELEASE.md). Publishing is
+`.github/workflows/publish.yml`, run by a published GitHub release whose tag
+matches the package version. It uses npm trusted publishing with GitHub's
+OIDC identity, without an npm publishing token.
 
 ## Regenerate
 
