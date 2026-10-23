@@ -11,7 +11,8 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./assistance": "./src/assistance/index.ts"
   },
   "publishConfig": {
     "access": "public",
@@ -21,6 +22,10 @@
       ".": {
         "types": "./dist/index.d.ts",
         "import": "./dist/index.js"
+      },
+      "./assistance": {
+        "types": "./dist/assistance/index.d.ts",
+        "import": "./dist/assistance/index.js"
       }
     }
   },
