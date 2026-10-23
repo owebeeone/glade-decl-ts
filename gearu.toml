@@ -1,0 +1,19 @@
+[project]
+name = "glade-decl-ts"
+branch = "main"
+remote = "origin"
+tag_prefix = "v"
+github_repo = "owebeeone/glade-decl-ts"
+
+[npm]
+manifest = "package.json"
+
+[release]
+checks = [
+    ["pnpm", "install", "--frozen-lockfile"],
+    ["pnpm", "test"],
+    ["pnpm", "build"],
+    ["npm", "pack", "--dry-run"],
+]
+commit_message = "chore(release): glade-decl-ts {version}"
+github_notes = "Glade declaration types {tag} for TypeScript. Generated from the pinned shared contract and verified against its golden corpus. The release workflow verifies a packed consumer installation and publishes @owebeeone/glade-decl through npm trusted publishing."
