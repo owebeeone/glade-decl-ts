@@ -16,4 +16,4 @@ checks = [
     ["npm", "pack", "--dry-run"],
 ]
 commit_message = "chore(release): glade-decl-ts {version}"
-github_notes = "Glade declaration types {tag} for TypeScript. Generated from the pinned shared contract and verified against its golden corpus. The release workflow verifies a packed consumer installation and publishes @owebeeone/glade-decl through npm trusted publishing."
+github_notes = "Glade declaration types {tag} for TypeScript, adding the assistance codec and typed assistance subpath while preserving the root exports. Generated from the pinned shared contract and verified against its golden corpus. The release workflow verifies a packed consumer installation and publishes @owebeeone/glade-decl through npm trusted publishing."

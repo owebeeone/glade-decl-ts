@@ -14,12 +14,14 @@ export and TypeScript declarations before publishing.
 
 ### Version selection
 
-Version **0.1.0 is already published on npm**. Do not attempt to replace it.
-The next patch release is **0.1.1**; the package manifest stays at 0.1.0 until
-an explicitly requested release advances it.
+Versions `0.1.0` and `0.1.1` are already published and immutable. The approved
+additive assistance API release is `0.2.0`. It retains the root declaration
+exports and adds the `@owebeeone/glade-decl/assistance` subpath, including its
+runtime codec and public types. Glial must declare `^0.2.0` before it can rely
+on that subpath; the previously published `0.1.1` package does not export it.
 
 ```sh
-gearu plan 0.1.1
+gearu plan 0.2.0
 ```
 
 Commit the setup before running `gearu release`. When operating inside a GWZ

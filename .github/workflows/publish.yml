@@ -43,7 +43,15 @@ jobs:
           echo '{ "name": "consumer", "private": true, "type": "module" }' > package.json
           pnpm add "$package_dir/$package_tarball" typescript@5.9.3
           node --input-type=module -e "const m = await import('@owebeeone/glade-decl'); if (typeof m.CONTRACT_VERSION !== 'string') { throw new Error('missing CONTRACT_VERSION export'); }"
-          echo 'import type { BindingDecl, ChangeEvent } from "@owebeeone/glade-decl"; export type Checked = [BindingDecl, ChangeEvent];' > check.ts
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { ASSISTANCE_VERSION, assistanceIR, loadSchema, encode, decode } from '@owebeeone/glade-decl/assistance';
+          assert.equal(ASSISTANCE_VERSION, 1n);
+          const schema = loadSchema(assistanceIR);
+          const bytes = Uint8Array.from(Buffer.from('a401627331026273320362733304627334', 'hex'));
+          assert.deepEqual(encode(schema, 'AssistanceIdentity', decode(schema, 'AssistanceIdentity', bytes)), bytes);
+          JS
+          echo 'import type { BindingDecl, ChangeEvent } from "@owebeeone/glade-decl"; import type { AssistanceIdentity, AssistanceAdvertisement, AssistanceRequest, AssistanceResult } from "@owebeeone/glade-decl/assistance"; export type Checked = [BindingDecl, ChangeEvent, AssistanceIdentity, AssistanceAdvertisement, AssistanceRequest, AssistanceResult];' > check.ts
           pnpm exec tsc --noEmit --strict --module nodenext --skipLibCheck false check.ts
 
   publish:
